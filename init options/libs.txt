@@ -1,0 +1,15 @@
+https://nuxt.com/modules/pinia
+
+npm i pinia @pinia/nuxt
+
+npm i lodash@^4.17.21
+npm i --save-dev @types/lodash
+
+npm install --save-dev sass
+
+https://axios.nuxtjs.org/setup
+npm install @nuxtjs/axios
+- это только для nuxt 2
+
+npm i vue-router@latest
+Не нужен - без него можно

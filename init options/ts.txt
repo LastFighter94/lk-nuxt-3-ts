@@ -1,0 +1,13 @@
+https://nuxt.com/docs/guide/concepts/typescript
+
+npm install --save-dev vue-tsc typescript
+
+npx nuxt typecheck
+
+Next.config.ts
+
+export default defineNuxtConfig({
+  typescript: {
+    typeCheck: true
+  }
+})

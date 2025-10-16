@@ -1,0 +1,47 @@
+$small-tablet: 481px;
+$tablet: 768px;
+$small-desktop: 960px;
+$desktop: 1192px;
+$over-desktop: 1482px;
+
+@mixin small-tablet {
+  @media (min-width: #{$small-tablet}) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: #{$tablet}) {
+    @content;
+  }
+}
+
+@mixin small-desktop {
+  @media (min-width: #{$small-desktop}) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: #{$desktop}) {
+    @content;
+  }
+}
+
+@mixin over-desktop {
+  @media (min-width: #{$over-desktop}) {
+    @content;
+  }
+}
+
+// добавляет элементу эффект наведения, если на данном устройстве
+// имеется возможность ховера (например,эффект наведения на кнопку)
+// на устройствах без возможности hover ничего не добавится.
+@mixin hover {
+  @media (min-width: 1025px) and (orientation: landscape) {
+    &:hover {
+      cursor: pointer;
+      @content;
+    }
+  }
+}

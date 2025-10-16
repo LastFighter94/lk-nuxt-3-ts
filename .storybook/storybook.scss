@@ -1,0 +1,50 @@
+.storybook-scroll-x {
+  padding-bottom: 10px;
+  overflow-x: scroll;
+}
+
+.storybook-table {
+  border-collapse: collapse;
+
+  > tr {
+    > th,
+    > td {
+      padding: 20px;
+      color: gray;
+      font-family: sans-serif;
+      border: 1px solid hsla(203, 50%, 30%, 0.15);
+    }
+
+    > th {
+      > span {
+        display: block;
+        margin-top: 10px;
+        font-size: 12px;
+        opacity: 0.8;
+      }
+    }
+
+    > td {
+      > .storybook-table__sub {
+        display: block;
+        margin-top: 10px;
+        font-size: 11px;
+        letter-spacing: 0.03em;
+        opacity: 0.6;
+      }
+    }
+  }
+
+  + .storybook-table {
+    margin-top: 20px;
+  }
+
+  &--compact {
+    > tr {
+      > th,
+      > td {
+        padding: 10px;
+      }
+    }
+  }
+}

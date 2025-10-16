@@ -1,0 +1,62 @@
+@use 'sass:color';
+@use 'sass:string';
+
+$colors: (
+  amethyst-purple: #562d88,
+  soft-amethyst: #9e7ae7,
+  bluebell: #7e60bf,
+  lavender-mist: #c5b4d9,
+  lavender-mist-low: #ebeaff,
+  lite-violet: #e7d5ea,
+  lite-violet-low: #f7f4ff,
+  text-pr-secondary: #001310,
+  text-pr: #070607,
+  text-pr-two: #010915,
+  text-sc: #5e6062,
+  dark-secondary-grey: #666,
+  text-sc-two: #9f9f9f,
+  white: #ffffff,
+  lite-violet-high: #ede5ff,
+  ghost-lavender: #f2f2fe,
+  ice-moon: #e7e7ff,
+  snowdrift: #f2f2fe,
+  snow-violet: #f1f1fe,
+  wisteria-cloud: #c5b4d9,
+  light-grey: #fafafa,
+  white-tab: #f3f5f7,
+  grey-tab: #716b78,
+  low-grey: #f0f0f0,
+  soft-violet: #faf7fc,
+  soft-grey: #f4f4f4,
+  dark-grey: #7c7c7c,
+  dark-violet: #070607,
+  deep-violet: #2c183d,
+  grey-line: #d4d3d3,
+  red-error: #bf2200,
+  low-violet: #ceb2e6,
+  glow-violet: #f9f8fc,
+  success-input: #3fa525,
+  soft-black: #444444,
+  lavender-purple: #a66fe5,
+  sunset-orange: #ec6f42,
+  sky-blue: #42b1e0,
+  aqua-wave: #31b1bf,
+  royal-blue: #265fc8,
+  electric-violet: #8049ff,
+  emerald-green: #23b955,
+  pale-lavender: #f7edff,
+  shadow-plum: #453d4c,
+  whisper-gray: #ededed,
+  graphite: #424242,
+  charcoal: #3c3c434d,
+);
+
+@function hexToRGB($hex) {
+  @return color.channel($hex, 'red', $space: rgb),
+    color.channel($hex, 'green', $space: rgb),
+    color.channel($hex, 'blue', $space: rgb);
+}
+
+@function color($color-name, $alpha: 1) {
+  @return rgba(var(--color-#{$color-name}), $alpha);
+}

@@ -1,0 +1,14 @@
+$base_font_size: 16;
+$font_family_366: 'PT Sans', sans-serif;
+$font_family_gz: Roboto, sans-serif;
+
+@function toRem($size) {
+  @return calc($size / $base_font_size) + rem;
+}
+
+@mixin fontRegular {
+  font-size: toRem(16);
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.5;
+}
