@@ -1,6 +1,7 @@
 // import router from './src/router/router';
 
 import pkg from './package.json';
+import router from './src/router/router';
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
@@ -12,6 +13,12 @@ export default defineNuxtConfig({
   },
   devServer: {
     host: '0.0.0.0',
+  },
+  hooks: {
+    // eslint-disable-next-line func-names
+    'pages:extend': function (pages) {
+      router(pages);
+    },
   },
   srcDir: 'src/',
   // hooks: {
