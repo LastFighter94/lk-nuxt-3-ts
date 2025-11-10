@@ -12,6 +12,6 @@ const { b } = useStyle('test-component');
 $block: 'test-component';
 
 .#{$block} {
-  background-color: red;
+  background-color: color('bluebell');
 }
 </style>
