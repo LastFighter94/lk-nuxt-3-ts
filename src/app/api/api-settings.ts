@@ -2,7 +2,7 @@ import axios, { AxiosError } from 'axios';
 import get from 'lodash/get';
 import { sha256 } from 'js-sha256';
 import { serverLog } from '@/shared/lib/server-log.ts';
-// import { useTestStore } from '~/entities/catalog/store.ts';
+import { useGlobalStore } from '~/entities/stores/globStore/store.ts';
 
 // Предположим, sha256 функция доступна, импортируйте ее из нужного пакета
 
@@ -14,11 +14,12 @@ axiosInstance.defaults.baseURL = '/';
 // axiosInstance.defaults.withCredentials = true;
 
 axiosInstance.interceptors.request.use(async (request) => {
+  const globalStore = useGlobalStore();
+
   const config = useRuntimeConfig();
 
   const { data } = request;
 
-  // const catalogStore = useTestStore()
   // const router = useRouter()
 
   const controller = new AbortController();
@@ -29,6 +30,12 @@ axiosInstance.interceptors.request.use(async (request) => {
   request.headers['moydevice-app-client'] = config.public.clientType;
   request.headers['moydevice-app-version'] = config.public.version;
   request.headers['moydevice-app-name'] = config.public.appType;
+
+  if (globalStore.getTokenValue !== '') {
+    request.headers.Authorization = globalStore.getTokenValue;
+  } else {
+    request.headers.Authorization = 'no auth token';
+  }
 
   const errorTest = false;
 
@@ -47,9 +54,12 @@ axiosInstance.interceptors.request.use(async (request) => {
     return Promise.reject(new axios.Cancel('Cancelled by client state'));
   }
 
-  const d = data ? JSON.stringify(data) : '';
+  const hiddenData = data ? JSON.stringify(data) : '';
   const str =
-    config.public.appType + config.public.version + d + config.public.appKey;
+    config.public.appType +
+    config.public.version +
+    hiddenData +
+    config.public.appKey;
 
   request.headers['x-signature'] = sha256(str).toString();
 

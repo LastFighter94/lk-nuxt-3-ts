@@ -13,3 +13,5 @@ npm install @nuxtjs/axios
 
 npm i vue-router@latest
 Не нужен - без него можно
+
+npm install pinia @pinia/nuxt pinia-plugin-persistedstate

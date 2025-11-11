@@ -11,6 +11,15 @@ export default defineNuxtConfig({
   typescript: {
     typeCheck: true,
   },
+  imports: {
+    dirs: ['stores'],
+    presets: [
+      {
+        from: 'pinia',
+        imports: ['defineStore', 'storeToRefs'],
+      },
+    ],
+  },
   devServer: {
     host: '0.0.0.0',
   },

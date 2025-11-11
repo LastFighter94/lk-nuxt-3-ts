@@ -8,6 +8,8 @@
 import { ref, watch, onMounted } from 'vue';
 import { useRoute } from 'vue-router';
 
+// тут можно использовать middleWare на авторизацию
+
 const route = useRoute();
 const layoutName = ref<'default' | 'custom'>('default');
 
